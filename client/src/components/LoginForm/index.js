@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
+import axios from 'axios';
 
 class LoginForm extends Component {
     state = {
@@ -17,7 +18,10 @@ class LoginForm extends Component {
             "username": event.currentTarget.username,
             "password": event.currentTarget.password
         });
-        console.log(this.state);
+        axios.post('/api/auth', {
+            'username': this.state.username,
+            'password': this.state.password
+        })
     }
 
     handleChange = (event) => {
