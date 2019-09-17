@@ -1,6 +1,6 @@
 import passport from 'passport';
 import jwt from 'jsonwebtoken';
-
+import models from '../'
 export default function (app) {
      app.post('/api/auth', function(request, response) {
         passport.authenticate(
@@ -37,4 +37,8 @@ export default function (app) {
             }
         )(request, response);
     });
+     app.post('/api/users', (request, response) => {
+         const body = request.body;
+
+     });
 }

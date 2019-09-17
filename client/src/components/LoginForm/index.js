@@ -25,7 +25,6 @@ class LoginForm extends Component {
             'username': this.state.username,
             'password': this.state.password
         }).then((response) => {
-            console.log(response);
             this.cookies.set('token', response.data.token);
         });
     }
@@ -33,17 +32,7 @@ class LoginForm extends Component {
     handleChange = (event) => {
         const { name, value } = event.target;
 
-        console.log(
-            {
-                [name]: value
-            }
-        );
-
-        this.setState(
-            {
-                  [name]: value
-                }
-            );
+        this.setState({[name]: value});
     }
 
     render() {
