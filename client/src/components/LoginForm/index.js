@@ -1,12 +1,15 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import axios from 'axios';
+import Cookies from 'universal-cookie';
 
 class LoginForm extends Component {
     state = {
         username: '',
         password: ''
     }
+
+    cookies = new Cookies();
 
     constructor(props) {
         super(props);
@@ -21,7 +24,10 @@ class LoginForm extends Component {
         axios.post('/api/auth', {
             'username': this.state.username,
             'password': this.state.password
-        })
+        }).then((response) => {
+            console.log(response);
+            this.cookies.set('token', response.data.token);
+        });
     }
 
     handleChange = (event) => {
