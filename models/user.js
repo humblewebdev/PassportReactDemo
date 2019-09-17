@@ -14,12 +14,12 @@ module.exports = function(sequelize, DataTypes) {
         {
             hooks: {
                 beforeCreate: (user) => {
-                const salt = bcrypt.genSaltSync();
-                user.password = bcrypt.hashSync(user.password, salt);
-            },
+                    const salt = bcrypt.genSaltSync();
+                    user.password = bcrypt.hashSync(user.password, salt);
+                },
+            }
         }
-    }
-);
+    );
     User.associate = function(models) {
         // associations can be defined here
     };
